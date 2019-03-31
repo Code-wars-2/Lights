@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Icon } from 'antd';
+import Bulb from './Assets/bulb-small.svg'
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      bulbState:false
+    }
+  }
+  toggleBulb = () => {
+    this.setState({
+      bulbState: !this.state.bulbState
+    })
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container">
+        <Icon type="bulb" theme="filled" className={"bulb-"+ this.state.bulbState} onMouseEnter={this.toggleBulb} onMouseLeave={this.toggleBulb}/>
+        <div className={"inner-light-"+ this.state.bulbState}/>
       </div>
     );
   }
